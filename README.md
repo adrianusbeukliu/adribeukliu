@@ -1,0 +1,2 @@
+# adribeukliu
+Orang Ayotupas Asli

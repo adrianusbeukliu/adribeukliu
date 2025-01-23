@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akses Kamera HP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Akses Kamera HP</h1>
+    <p>Klik tombol di bawah ini untuk mengaktifkan kamera Anda:</p>
+    <button id="openCamera">Aktifkan Kamera</button>
+    <video id="camera" autoplay playsinline></video>
+
+    <script>
+        const openCameraButton = document.getElementById('openCamera');
+        const camera = document.getElementById('camera');
+
+        openCameraButton.addEventListener('click', async () => {
+            try {
+                // Meminta akses ke kamera perangkat
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                camera.srcObject = stream;
+            } catch (error) {
+                alert('Kamera tidak dapat diakses: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
